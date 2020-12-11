@@ -1,0 +1,20 @@
+{"TeacherList": [{
+  "id":1,
+  "firstName":"Hannelore",
+  "lastName": "Lisei",
+  "courses":["c1"]
+},
+  {
+    "id":2,
+    "firstName":"Diana",
+    "lastName": "Cristea",
+    "courses":["c2"]
+  },
+  {
+    "id":3,
+    "firstName":"Catalin",
+    "lastName": "Rusu",
+    "courses":["c3"]
+  }
+]
+}

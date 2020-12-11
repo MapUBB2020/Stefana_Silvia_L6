@@ -1,0 +1,23 @@
+{"studentList": [{
+  "id":1,
+  "firstName":"Silvia",
+  "lastName":"Puiac",
+  "totalCredits": 9,
+  "enrolledCourse":[]
+},
+  {
+    "id":2,
+    "firstName":"Stef",
+    "lastName":"Rosca",
+    "totalCredits": 7,
+    "enrolledCourse":["c1","c2"]
+  },
+  {
+    "id":3,
+    "firstName":"Andrei",
+    "lastName":"Lob",
+    "totalCredits": 4,
+    "enrolledCourse":["c2"]
+  }
+]
+}

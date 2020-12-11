@@ -1,0 +1,26 @@
+{"courseList": [{
+  "id":1,
+  "name":"WS",
+  "teacher": "Hannelore Lisei",
+  "maxEnrollment": 2,
+  "studentsEnrolled":["s1","s2"],
+  "credits":3
+},
+  {
+    "id":2,
+    "name":"BD",
+    "teacher": "Cristea Diana",
+    "maxEnrollment": 3,
+    "studentsEnrolled":["s2","s3"],
+    "credits":4
+  },
+  {
+    "id":3,
+    "name":"MAP",
+    "teacher": "Rusu Catalin",
+    "maxEnrollment": 4,
+    "studentsEnrolled":["s1"],
+    "credits":6
+  }
+]
+}

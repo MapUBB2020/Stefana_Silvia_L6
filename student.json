@@ -1,4 +1,4 @@
-{"studentList": [{
+[{
   "id":1,
   "firstName":"Silvia",
   "lastName":"Puiac",
@@ -20,4 +20,3 @@
     "enrolledCourse":["c2"]
   }
 ]
-}

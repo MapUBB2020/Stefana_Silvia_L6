@@ -1,4 +1,4 @@
-{"TeacherList": [{
+[{
   "id":1,
   "firstName":"Hannelore",
   "lastName": "Lisei",
@@ -17,4 +17,3 @@
     "courses":["c3"]
   }
 ]
-}

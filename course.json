@@ -1,4 +1,4 @@
-{"courseList": [{
+[{
   "id":1,
   "name":"WS",
   "teacher": "Hannelore Lisei",
@@ -23,4 +23,3 @@
     "credits":6
   }
 ]
-}

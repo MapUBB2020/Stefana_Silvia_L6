@@ -4,18 +4,21 @@ import lab3.model.Course;
 import lab3.model.Student;
 import lab3.model.Teacher;
 import lab3.repository.CourseFileRepository;
+import lab3.repository.TeacherFileRepository;
 
 import java.util.*;
 public class RegistrationSystem {
 
     CourseFileRepository courseFileRepository;
+    TeacherFileRepository teacherFileRepository;
 
     /**
      * constructor
      * @param courseFileRepository
      */
-    public RegistrationSystem(CourseFileRepository courseFileRepository) {
+    public RegistrationSystem(CourseFileRepository courseFileRepository,TeacherFileRepository teacherFileRepository) {
         this.courseFileRepository = courseFileRepository;
+        this.teacherFileRepository=teacherFileRepository;
     }
 
     /**
@@ -137,6 +140,14 @@ public class RegistrationSystem {
                 filtered.add(course);
         }
         return filtered;
+    }
+    public boolean validateTeacherId(long id){
+        for(Teacher teacher:teacherFileRepository.teacherList)
+            if(teacherFileRepository.findOne(id)==teacher)
+                return true;
+
+        return false;
+
     }
 
 }

@@ -24,7 +24,7 @@ public class Menu {
         this.cr = cr;
         this.sr = sr;
         this.tr = tr;
-        rs=new lab3.RegistrationSystem(cr);
+        rs=new lab3.RegistrationSystem(cr,tr);
     }
 
     public void displayMainMenu(){

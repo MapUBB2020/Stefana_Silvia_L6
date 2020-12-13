@@ -1,57 +1,36 @@
-[{
-  "id":1,
-  "name":"WS",
-  "teacher": "Hannelore Lisei",
-  "maxEnrollment": 2,
-  "studentsEnrolled":[{
-                      "id":1,
-                      "firstName":"Silvia",
-                      "lastName":"Puiac",
-                      "totalCredits": 9,
-                      "enrolledCourse":[]
-                    },
-                      {
-                        "id":2,
-                        "firstName":"Stef",
-                        "lastName":"Rosca",
-                        "totalCredits": 7,
-                        "enrolledCourse":[]
-                      }],
-  "credits":3
-},
-  {
-    "id":2,
-    "name":"BD",
-    "teacher": "Cristea Diana",
-    "maxEnrollment": 3,
-    "studentsEnrolled":[{
-                          "id":2,
-                          "firstName":"Stef",
-                          "lastName":"Rosca",
-                          "totalCredits": 7,
-                          "enrolledCourse":[]
-                        },
-                          {
-                            "id":3,
-                            "firstName":"Andrei",
-                            "lastName":"Lob",
-                            "totalCredits": 4,
-                            "enrolledCourse":[]
-                          }],
-    "credits":4
-  },
-  {
-    "id":3,
-    "name":"MAP",
-    "teacher": "Rusu Catalin",
-    "maxEnrollment": 4,
-    "studentsEnrolled":[{
-                            "id":1,
-                            "firstName":"Silvia",
-                            "lastName":"Puiac",
-                            "totalCredits": 9,
-                            "enrolledCourse":[]
-                          }],
-    "credits":6
-  }
-]
+{
+  "courseList": [
+    {
+      "id": 1,
+      "name": "WS",
+      "teacher": "Hannelore Lisei",
+      "maxEnrollment": 2,
+      "studentsEnrolled": [
+        "s1",
+        "s2"
+      ],
+      "credits": 3
+    },
+    {
+      "id": 2,
+      "name": "BD",
+      "teacher": "Cristea Diana",
+      "maxEnrollment": 3,
+      "studentsEnrolled": [
+        "s2",
+        "s3"
+      ],
+      "credits": 4
+    },
+    {
+      "id": 3,
+      "name": "MAP",
+      "teacher": "Rusu Catalin",
+      "maxEnrollment": 4,
+      "studentsEnrolled": [
+        "s1"
+      ],
+      "credits": 6
+    }
+  ]
+}

@@ -38,7 +38,7 @@ public class Student extends Person {
         this.enrolledCourse = enrolledCourse;
     }
 
-    @Override
+/*    @Override
     public String toString() {
         String string="";
         for (Course course:enrolledCourse)
@@ -47,7 +47,7 @@ public class Student extends Person {
                 "studentId -" + studentId +
                 ", totalCredits - " + totalCredits +
                 ", enrolledCourse - " + string;
-    }
+    }*/
 
     @Override
     public Object findOne(Long id) {

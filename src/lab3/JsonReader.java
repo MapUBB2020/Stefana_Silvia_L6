@@ -44,7 +44,7 @@ public class JsonReader {
         List<Course> courseList;
 
         try (Reader reader = Files.newBufferedReader(path)) {
-            courseList = gson.fromJson(reader, new TypeToken<List<Student>>() {
+            courseList = gson.fromJson(reader, new TypeToken<List<Course>>() {
             }.getType());
         }
         return courseList;
@@ -58,7 +58,7 @@ public class JsonReader {
         List<Teacher> teacherList;
 
         try (Reader reader = Files.newBufferedReader(path)) {
-            teacherList = gson.fromJson(reader, new TypeToken<List<Student>>() {
+            teacherList = gson.fromJson(reader, new TypeToken<List<Teacher>>() {
             }.getType());
         }
         return teacherList;

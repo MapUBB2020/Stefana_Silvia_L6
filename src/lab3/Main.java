@@ -27,12 +27,12 @@ public class Main extends Application {
 
 
     public static void main(String[] args) throws IOException {
-        launch(args);
+        //launch(args);
         JsonReader js = new JsonReader();
-        Teacher teacher=new Teacher();
+        /*Teacher teacher=new Teacher();
         CourseFileRepository cfr=new CourseFileRepository(js.jsonReaderCourses());
-        cfr.setCourseList(js.jsonReaderCourses());
-        //System.out.println(cfr.getCourseList());
+        cfr.setCourseList(js.jsonReaderCourses());*/
+        System.out.println(js.jsonReaderCourses());
 }
 }
 

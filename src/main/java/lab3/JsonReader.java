@@ -169,7 +169,11 @@ public class JsonReader {
         //System.out.println(cr.getCourseList());
         //ControllerJavaFx cfx=new ControllerJavaFx(cr,sr,tr);
         //Menu menu=new Menu(cr,sr,tr);
-        ControllerJavaFx cfx=new ControllerJavaFx(cr,sr,tr);
+        ControllerJavaFx cfx=new ControllerJavaFx();
+        cfx.setCr(cr);
+        cfx.setSr(sr);
+        cfx.setTr(tr);
+
         cfx.mainMenu();
 
 

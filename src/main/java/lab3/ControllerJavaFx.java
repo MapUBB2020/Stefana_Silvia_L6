@@ -29,15 +29,48 @@ public class ControllerJavaFx implements Initializable {
     public Label label1;
     @FXML
     public Label lb;
+    @FXML
     public Button buttonTeacherLogin;
 
 
     Stage stage= new Stage();
 
-    CourseFileRepository cr;
-    StudentFileRepository sr;
-    TeacherFileRepository tr;
+    public CourseFileRepository cr;
+    public StudentFileRepository sr;
+    public TeacherFileRepository tr;
     private static lab3.RegistrationSystem rs;
+
+    public CourseFileRepository getCr() {
+        return cr;
+    }
+
+    public void setCr(CourseFileRepository cr) {
+        this.cr = cr;
+    }
+
+    public StudentFileRepository getSr() {
+        return sr;
+    }
+
+    public void setSr(StudentFileRepository sr) {
+        this.sr = sr;
+    }
+
+    public TeacherFileRepository getTr() {
+        return tr;
+    }
+
+    public void setTr(TeacherFileRepository tr) {
+        this.tr = tr;
+    }
+
+    public static RegistrationSystem getRs() {
+        return rs;
+    }
+
+    public static void setRs(RegistrationSystem rs) {
+        ControllerJavaFx.rs = rs;
+    }
 
     public ControllerJavaFx() {}
 
@@ -46,6 +79,7 @@ public class ControllerJavaFx implements Initializable {
         this.sr = sr;
         this.tr = tr;
         rs=new lab3.RegistrationSystem(cr,tr);
+
     }
 
 
@@ -58,15 +92,14 @@ public class ControllerJavaFx implements Initializable {
     public void mainMenu() throws IOException {
         Stage s=new Stage();
 
-        Parent root = FXMLLoader.load(getClass().getResource("/lab3/uniApp.fxml"));
+        FXMLLoader loader =new FXMLLoader(getClass().getResource("/lab3/uniApp.fxml"));
         s.setTitle("Platforma academica a Stefanei si a Silviei! Please like and subscribe.");
+        loader.setController(this);
+        Parent root=loader.load();
         s.setScene(new Scene(root, 900, 700));
         s.show();
 
-
         //System.out.println(cr.getCourseList());
-
-
     }
 
 
@@ -76,13 +109,16 @@ public class ControllerJavaFx implements Initializable {
         stage=(Stage) ((Node) e.getSource()).getScene().getWindow();
         stage.setScene(menuT);
         stage.show();
-        //System.out.println(cr.getCourseList());
+        System.out.println(cr.getCourseList());
 
     }
 
     public void checkId(javafx.event.ActionEvent e) throws IOException {
+        String loginTeacher=loginInput.getText();
+        /*if(tr.findOne(Long.getLong(loginTeacher))!=null)
+            System.out.println("tr");*/
 
-
+        System.out.println(tr.getTeacherList());
 
 
 

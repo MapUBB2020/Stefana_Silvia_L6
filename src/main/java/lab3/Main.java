@@ -12,13 +12,17 @@ public class Main extends Application {
 
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) throws Exception {/*
+        Stage s=new Stage();
 
         Parent root = FXMLLoader.load(getClass().getResource("/lab3/uniApp.fxml"));
-        primaryStage.setTitle("Platforma academica a Stefanei si a Silviei! Please like and subscribe.");
-        primaryStage.setScene(new Scene(root, 900, 700));
+        s.setTitle("Platforma academica a Stefanei si a Silviei! Please like and subscribe.");
+        s.setScene(new Scene(root, 900, 700));
 
-        primaryStage.show();
+        s.show();*/
+
+        JsonReader.read();
+
 
     }
 
@@ -26,9 +30,6 @@ public class Main extends Application {
     public static void main(String[] args) throws IOException {
 
         launch(args);
-
-        //JsonReader.read();
-
 
 }
 }

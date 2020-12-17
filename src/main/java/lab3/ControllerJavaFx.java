@@ -1,11 +1,14 @@
 package lab3;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -13,21 +16,23 @@ import lab3.repository.CourseFileRepository;
 import lab3.repository.StudentFileRepository;
 import lab3.repository.TeacherFileRepository;
 
-import java.awt.event.ActionEvent;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ControllerJavaFx implements Initializable {
 
+    @FXML
+    public TextField loginInput;
+    @FXML
+    public Label label1;
+    @FXML
+    public Label lb;
+    public Button buttonTeacherLogin;
+
 
     Stage stage= new Stage();
-
-    @FXML
-    Label label1;
-    @FXML
-    TextField loginInput;
-
 
     CourseFileRepository cr;
     StudentFileRepository sr;
@@ -58,7 +63,9 @@ public class ControllerJavaFx implements Initializable {
         s.setScene(new Scene(root, 900, 700));
         s.show();
 
-        System.out.println(cr.getCourseList());
+
+        //System.out.println(cr.getCourseList());
+
 
     }
 
@@ -69,7 +76,7 @@ public class ControllerJavaFx implements Initializable {
         stage=(Stage) ((Node) e.getSource()).getScene().getWindow();
         stage.setScene(menuT);
         stage.show();
-        System.out.println(cr.getCourseList());
+        //System.out.println(cr.getCourseList());
 
     }
 
@@ -81,10 +88,14 @@ public class ControllerJavaFx implements Initializable {
 
     }
 
-    public void abc(){
-        String login= loginInput.getText();
-        if(tr.findOne(Long.parseLong(login))!=null)
-            System.out.println("ok");
+    public void abc(javafx.event.ActionEvent e){
+        buttonTeacherLogin.setOnAction(actionEvent->{
+            try {
+                menuTeacher(e);
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+        });
 
     }
 }

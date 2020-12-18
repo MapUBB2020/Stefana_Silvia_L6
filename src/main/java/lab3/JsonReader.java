@@ -112,7 +112,7 @@ public class JsonReader {
             JsonNode parser2 = om2.readTree(reader2);
 
 
-            for (JsonNode pm : parser2.path("TeacherList")) {
+            for (JsonNode pm : parser2.path("teacherList")) {
                 List<Course> coursesT = new ArrayList<>();
                 Teacher teacher = new Teacher();
 

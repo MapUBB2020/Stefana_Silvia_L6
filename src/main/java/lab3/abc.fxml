@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lab3.ControllerJavaFx">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="401.0" layoutY="230.0" prefHeight="64.0" prefWidth="116.0" text="Login">
          <font>
@@ -16,5 +16,6 @@
       <TextField fx:id="loginInput" layoutX="327.0" layoutY="322.0" prefHeight="56.0" prefWidth="247.0" promptText="Please enter your id." />
       <Button layoutX="424.0" layoutY="416.0" mnemonicParsing="false" onAction="#checkId" text="Submit" />
       <Label fx:id="label1" layoutX="388.0" layoutY="520.0" prefHeight="56.0" prefWidth="143.0" />
+      <Label fx:id="loginError" layoutX="336.0" layoutY="294.0" prefHeight="25.0" prefWidth="228.0" />
    </children>
 </Pane>

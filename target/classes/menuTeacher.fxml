@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="59.0" layoutY="32.0" prefHeight="43.0" prefWidth="92.0" text="Buna ziua," />
+      <Label fx:id="teacherName" layoutX="96.0" layoutY="68.0" prefHeight="34.0" prefWidth="92.0" />
+      <Label layoutX="368.0" layoutY="36.0" prefHeight="34.0" prefWidth="103.0" text="Cursurile mele:" />
+      <Label fx:id="coursesTeacher" layoutX="471.0" layoutY="51.0" prefHeight="34.0" prefWidth="57.0" />
+      <Label layoutX="142.0" layoutY="114.0" prefHeight="68.0" prefWidth="274.0" text="Introduceti id ul unui curs pt informatii:" />
+      <TextField fx:id="idCourse" layoutX="151.0" layoutY="164.0" />
+      <Label fx:id="courseLabel" layoutX="151.0" layoutY="218.0" prefHeight="153.0" prefWidth="274.0" />
+   </children>
+</Pane>

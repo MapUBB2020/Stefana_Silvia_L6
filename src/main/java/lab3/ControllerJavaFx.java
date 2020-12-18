@@ -26,11 +26,17 @@ public class ControllerJavaFx implements Initializable {
     @FXML
     public TextField loginInput;
     @FXML
-    public Label label1;
+    public Label loginError;
     @FXML
-    public Label lb;
+    public Label teacherName;
     @FXML
-    public Button buttonTeacherLogin;
+    public Label coursesTeacher;
+    @FXML
+    public TextField idCourse;
+    @FXML
+    public Label courseLabel;
+
+
 
 
     Stage stage= new Stage();
@@ -103,35 +109,52 @@ public class ControllerJavaFx implements Initializable {
     }
 
 
-    public void menuTeacher(javafx.event.ActionEvent e) throws IOException {
+    public void loginTeacherPage(javafx.event.ActionEvent e) throws IOException {/*
         Parent finishRoot = FXMLLoader.load(getClass().getResource("/lab3/abc.fxml"));
         Scene menuT=new Scene(finishRoot);
         stage=(Stage) ((Node) e.getSource()).getScene().getWindow();
         stage.setScene(menuT);
         stage.show();
-        System.out.println(cr.getCourseList());
+        System.out.println(cr.getCourseList());*/
+        FXMLLoader loader1 = new FXMLLoader(getClass().getResource("/lab3/abc.fxml"));
+        loader1.setController(this);
+        Parent finishRoot=loader1.load();
+        Scene menuT=new Scene(finishRoot);
+        stage=(Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage.setScene(menuT);
+        stage.show();
+        System.out.println(sr.getStudentList());
 
     }
 
     public void checkId(javafx.event.ActionEvent e) throws IOException {
         String loginTeacher=loginInput.getText();
-        /*if(tr.findOne(Long.getLong(loginTeacher))!=null)
-            System.out.println("tr");*/
+        System.out.println(sr.getStudentList().get(0).getTotalCredits());
+        System.out.println(sr.getStudentList());
+        if(tr.findOne(Long.parseLong(loginTeacher))==null)
+            loginError.setText("bitch u entered the wrong id!");
+        else
+            menuTeacher(e,Long.parseLong(loginTeacher));
 
-        System.out.println(tr.getTeacherList());
+    }
+
+    public void menuTeacher(javafx.event.ActionEvent e,Long id) throws IOException {
+        FXMLLoader loader2 = new FXMLLoader(getClass().getResource("/lab3/menuTeacher.fxml"));
+        loader2.setController(this);
+        Parent finishRoot=loader2.load();
+        Scene menuT=new Scene(finishRoot);
+        stage=(Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage.setScene(menuT);
+        stage.show();
+
+        teacherName.setText(tr.findOne(id).getFirstName()+" "+tr.findOne(id).getLastName());
+        coursesTeacher.setText(tr.findOne(id).getCourses().get(0).getName()+" id: "+tr.findOne(id).getCourses().get(0).getId());
+    }
 
 
+    public void infoCourse(javafx.event.ActionEvent e,Long id){
+        courseLabel.setText(idCourse.getText());
+    }
 
     }
 
-    public void abc(javafx.event.ActionEvent e){
-        buttonTeacherLogin.setOnAction(actionEvent->{
-            try {
-                menuTeacher(e);
-            } catch (IOException ioException) {
-                ioException.printStackTrace();
-            }
-        });
-
-    }
-}

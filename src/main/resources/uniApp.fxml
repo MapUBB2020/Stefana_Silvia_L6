@@ -9,7 +9,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" >
    <children>
-      <Button fx:id="buttonTeacherLogin" layoutX="338.0" layoutY="487.0" mnemonicParsing="false" onAction="#menuTeacher" prefHeight="90.0" prefWidth="225.0" text="Profesor">
+      <Button fx:id="buttonTeacherLogin" layoutX="338.0" layoutY="487.0" mnemonicParsing="false" onAction="#loginTeacherPage" prefHeight="90.0" prefWidth="225.0" text="Profesor">
          <font>
             <Font size="18.0" />
          </font>

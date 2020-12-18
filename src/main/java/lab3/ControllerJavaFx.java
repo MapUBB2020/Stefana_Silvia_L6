@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import lab3.model.Student;
 import lab3.repository.CourseFileRepository;
 import lab3.repository.StudentFileRepository;
 import lab3.repository.TeacherFileRepository;
@@ -35,6 +36,8 @@ public class ControllerJavaFx implements Initializable {
     public TextField idCourse;
     @FXML
     public Label courseLabel;
+    @FXML
+    public Button sendButton;
 
 
 
@@ -149,11 +152,16 @@ public class ControllerJavaFx implements Initializable {
 
         teacherName.setText(tr.findOne(id).getFirstName()+" "+tr.findOne(id).getLastName());
         coursesTeacher.setText(tr.findOne(id).getCourses().get(0).getName()+" id: "+tr.findOne(id).getCourses().get(0).getId());
+
+        sendButton.setOnAction(actionEvent -> {
+            infoCourse(id);
+        });
     }
 
 
-    public void infoCourse(javafx.event.ActionEvent e,Long id){
-        courseLabel.setText(idCourse.getText());
+    public void infoCourse(Long id){
+        courseLabel.setText(cr.findOne(id).getStudentsEnrolled().get(0).getFirstName()+" "+cr.findOne(id).getStudentsEnrolled().get(0).getLastName());
+
     }
 
     }

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="74.0" layoutY="72.0" prefHeight="52.0" prefWidth="106.0" text="Buna ziua,">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="numeStudent" layoutX="101.0" layoutY="130.0" prefHeight="74.0" prefWidth="226.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="237.0" layoutY="251.0" prefHeight="60.0" prefWidth="304.0" text="Register for a course">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="237.0" layoutY="304.0" prefHeight="60.0" prefWidth="485.0" text="Show courses with free places and how many are left">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="237.0" layoutY="364.0" prefHeight="60.0" prefWidth="198.0" text="Show all courses">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="register" layoutX="162.0" layoutY="269.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="44.0" text="1." />
+      <Button fx:id="freePlaces" layoutX="162.0" layoutY="322.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="44.0" text="2." />
+      <Button fx:id="allCourses" layoutX="162.0" layoutY="382.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="44.0" text="3." />
+      <Label fx:id="results" layoutX="189.0" layoutY="466.0" prefHeight="155.0" prefWidth="464.0" />
+   </children>
+</Pane>

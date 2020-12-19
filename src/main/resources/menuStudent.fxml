@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="74.0" layoutY="72.0" prefHeight="52.0" prefWidth="106.0" text="Buna ziua,">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="numeStudent" layoutX="101.0" layoutY="130.0" prefHeight="74.0" prefWidth="226.0" />
+   </children>
+</Pane>

@@ -5,6 +5,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -12,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import lab3.model.Course;
 import lab3.model.Student;
@@ -24,6 +26,8 @@ import lab3.repository.TeacherFileRepository;
 import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class ControllerJavaFx implements Initializable {
@@ -36,6 +40,10 @@ public class ControllerJavaFx implements Initializable {
     public Label teacherName;
     @FXML
     public Label coursesTeacher;
+    @FXML
+    public Button buttonDeleteCourse;
+    @FXML
+    public Label mesajCursSters;
     @FXML
     public TextField idCourse;
     @FXML
@@ -52,6 +60,8 @@ public class ControllerJavaFx implements Initializable {
     public Button register;
     @FXML
     public Label results;
+    @FXML
+    public TextField courseToRegister;
 
 
     Stage stage= new Stage();
@@ -59,7 +69,7 @@ public class ControllerJavaFx implements Initializable {
     public CourseFileRepository cr;
     public StudentFileRepository sr;
     public TeacherFileRepository tr;
-    private static lab3.RegistrationSystem rs;
+    public lab3.RegistrationSystem rs;
 
     public CourseFileRepository getCr() {
         return cr;
@@ -85,12 +95,12 @@ public class ControllerJavaFx implements Initializable {
         this.tr = tr;
     }
 
-    public static RegistrationSystem getRs() {
+    public RegistrationSystem getRs() {
         return rs;
     }
 
-    public static void setRs(RegistrationSystem rs) {
-        ControllerJavaFx.rs = rs;
+    public void setRs(RegistrationSystem rs) {
+        this.rs = rs;
     }
 
     public ControllerJavaFx() {}
@@ -105,10 +115,7 @@ public class ControllerJavaFx implements Initializable {
 
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-
-    }
+    public void initialize(URL url, ResourceBundle resourceBundle) {}
 
     public void mainMenu() throws IOException {
         Stage s=new Stage();
@@ -144,6 +151,7 @@ public class ControllerJavaFx implements Initializable {
 
     public void checkId(javafx.event.ActionEvent e) throws IOException {
         String loginTeacher=loginInput.getText();
+        //long id=0;
         //System.out.println(sr.getStudentList().get(0).getTotalCredits());
         //System.out.println(sr.getStudentList());
         if(tr.findOne(Long.parseLong(loginTeacher))==null)
@@ -158,6 +166,15 @@ public class ControllerJavaFx implements Initializable {
             else
                 loginError.setText("bitch u entered the wrong id!");
         }*/
+/*        for (int i=0; i<tr.getTeacherList().size();i++){
+            if(loginTeacher==tr.getTeacherList().get(i).getFirstName()+" "+tr.getTeacherList().get(i).getLastName())
+                id=tr.getTeacherList().get(i).getId();
+            System.out.println(id);
+        }
+        if(tr.findOne(id)==null)
+            loginError.setText("bitch u entered the wrong id!");
+        else
+            menuTeacher(e,Long.parseLong(loginTeacher));*/
 
     }
 
@@ -177,18 +194,20 @@ public class ControllerJavaFx implements Initializable {
         sendButton.setOnAction(actionEvent -> {
             infoCourse(id);
         });
+
+        buttonDeleteCourse.setOnAction(actionEvent -> {
+            rs.deleteCourse(id,tr.findOne(id));
+            mesajCursSters.setText("Cursul a fost sters!");
+            coursesTeacher.setText(tr.findOne(id).getCourses().toString());
+        });
     }
 
 
 
     public void infoCourse(Long id){
-/*        for (Course course:cr.getCourseList()) {
-            for (Student student : course.getStudentsEnrolled()) {
 
-                courseLabel.setText("Studentii inscrisi la cursul dumneavoastra sunt:\n" + cr.findOne(id).getStudentsEnrolled().get(0).getFirstName() + " " + cr.findOne(id).getStudentsEnrolled().get(0).getLastName());
-            }
-        }*/
         for (int i=0; i<cr.findOne(id).getStudentsEnrolled().size();i++) {
+            //Label label=new Label();
             courseLabel.setText("Studentii inscrisi la cursul dumneavoastra sunt:\n" + cr.findOne(id).getStudentsEnrolled().get(i).getFirstName() + " " + cr.findOne(id).getStudentsEnrolled().get(i).getLastName());
             System.out.println(cr.findOne(id).getStudentsEnrolled());
         }
@@ -218,17 +237,49 @@ public class ControllerJavaFx implements Initializable {
         numeStudent.setText(sr.findOne(id).getFirstName()+" "+sr.findOne(id).getLastName());
 
         register.setOnAction(actionEvent -> {
-            rs.register(id, sr.findOne(id));
-            results.setText("bv te ai inregistrat");
+
+            String course=loginInput.getText();
+            System.out.println(course);
+            System.out.println(sr.findOne(id));
+            rs.register(Long.parseLong(course), sr.findOne(id));
+
+/*            List<Course> options=new ArrayList<>();
+            options=cr.getCourseList();
+
+            for (int i=0; i<options.size();i++){
+                System.out.println(options);
+                results.setText(options.get(i).getName());
+            }*/
+
+        });
+
+        freePlaces.setOnAction(actionEvent -> {
+
+/*            List<Course> available= new ArrayList<Course>();
+            for(Course course: cr.getCourseList())
+            {
+                int free=course.getMaxEnrollment()-course.getStudentsEnrolled().size();
+                if(free>0)
+                    results.setText((course.getName()+" has "+free+" free places!:)"));
+                available.add(course);
+            }*/
+
+            //results.setText(rs.retrieveCoursesWithFreePlaces().toString());
+            rs.retrieveCoursesWithFreePlaces();
+            for (Course curs : rs.retrieveCoursesWithFreePlaces()){
+                results.setText(rs.retrieveCoursesWithFreePlaces().toString());
+            }
         });
 
         allCourses.setOnAction(actionEvent -> {
             rs.getAllCourses();
+            List<String> numeCursuri=new ArrayList<>();
+
+            for(Course curs:cr.getCourseList())
+                numeCursuri.add(curs.getName());
+            results.setText(numeCursuri.toString());
         });
 
-        freePlaces.setOnAction(actionEvent -> {
-            rs.retrieveCoursesWithFreePlaces();
-        });
     }
     public void checkIdStudent(javafx.event.ActionEvent e) throws IOException {
         String loginStudent=loginInput.getText();

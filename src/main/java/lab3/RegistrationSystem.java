@@ -1,5 +1,7 @@
 package lab3;
 
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import lab3.model.Course;
 import lab3.model.Student;
 import lab3.model.Teacher;
@@ -7,6 +9,8 @@ import lab3.repository.CourseFileRepository;
 import lab3.repository.TeacherFileRepository;
 
 import java.util.*;
+
+
 public class RegistrationSystem {
 
     CourseFileRepository courseFileRepository;
@@ -32,10 +36,13 @@ public class RegistrationSystem {
      * we add the course in courseList from CourseRepo
      * we update the students totalCredit after he registered successfully for a new course
      */
+    @FXML
+    public Label results;
     public boolean register(long id, Student student) {
 
         if (courseFileRepository.findOne(id) == null) {
-            System.out.println("This course does not exist. Please select another one!");
+            //System.out.println("This course does not exist. Please select another one!");
+            results.setText("This course does not exist. Please select another one!");
             return false;
         }
 

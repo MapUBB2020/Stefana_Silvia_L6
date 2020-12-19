@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
@@ -18,17 +19,17 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="237.0" layoutY="251.0" prefHeight="60.0" prefWidth="304.0" text="Register for a course">
+      <Label layoutX="237.0" layoutY="251.0" prefHeight="60.0" prefWidth="304.0" text="Inscrie-te la un curs">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="237.0" layoutY="304.0" prefHeight="60.0" prefWidth="485.0" text="Show courses with free places and how many are left">
+      <Label layoutX="237.0" layoutY="304.0" prefHeight="60.0" prefWidth="485.0" text="Vezi cursurile cu locuri libere si cate au mai ramas">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="237.0" layoutY="364.0" prefHeight="60.0" prefWidth="198.0" text="Show all courses">
+      <Label layoutX="237.0" layoutY="364.0" prefHeight="60.0" prefWidth="198.0" text="Vezi toate cursurile">
          <font>
             <Font size="18.0" />
          </font>
@@ -36,6 +37,11 @@
       <Button fx:id="register" layoutX="162.0" layoutY="269.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="44.0" text="1." />
       <Button fx:id="freePlaces" layoutX="162.0" layoutY="322.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="44.0" text="2." />
       <Button fx:id="allCourses" layoutX="162.0" layoutY="382.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="44.0" text="3." />
-      <Label fx:id="results" layoutX="189.0" layoutY="466.0" prefHeight="155.0" prefWidth="464.0" />
+      <Label fx:id="results" layoutX="189.0" layoutY="466.0" prefHeight="155.0" prefWidth="464.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="courseToRegister" layoutX="457.0" layoutY="264.0" prefHeight="35.0" prefWidth="169.0" promptText="id-ul cursului" />
    </children>
 </Pane>

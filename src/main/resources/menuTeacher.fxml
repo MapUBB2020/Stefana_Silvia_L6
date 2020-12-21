@@ -44,7 +44,7 @@
       </Label>
       <ImageView fitHeight="177.0" fitWidth="282.0" layoutX="671.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@WhatsApp%20Image%202020-12-21%20at%2015.13.09.jpegWhatsApp%20Image%202020-12-21%20at%2015.13.09.jpeg" />
+            <Image url="@../WhatsApp Image 2020-12-21 at 15.13.09.jpeg" />
          </image>
       </ImageView>
       <Button fx:id="backButton" mnemonicParsing="false" onAction="#mainMenu" prefHeight="37.0" prefWidth="73.0" text="&lt;-" />

@@ -20,31 +20,31 @@
          </font></Label>
       <Label layoutX="278.0" layoutY="263.0" prefHeight="69.0" prefWidth="349.0" text="Cursurile dumneavoastra sunt:">
          <font>
-            <Font size="22.0" />
+            <Font size="24.0" />
          </font></Label>
-      <Label fx:id="coursesTeacher" layoutX="278.0" layoutY="333.0" prefHeight="54.0" prefWidth="196.0">
-         <font>
-            <Font size="18.0" />
-         </font></Label>
-      <Label layoutX="103.0" layoutY="438.0" prefHeight="87.0" prefWidth="349.0" text="Vedeti studentii inscrisi la curs:">
+      <Label fx:id="coursesTeacher" layoutX="293.0" layoutY="333.0" prefHeight="54.0" prefWidth="196.0" textFill="#324a82">
          <font>
             <Font size="22.0" />
          </font></Label>
-      <TextField fx:id="idCourse" layoutX="107.0" layoutY="558.0" prefHeight="43.0" prefWidth="126.0" promptText="id curs" />
-      <Label fx:id="courseLabel" layoutX="443.0" layoutY="451.0" prefHeight="107.0" prefWidth="254.0" textFill="#324a82">
+      <Label layoutX="276.0" layoutY="473.0" prefHeight="87.0" prefWidth="349.0" text="Vedeti studentii inscrisi la curs:">
          <font>
             <Font size="24.0" />
          </font></Label>
-      <Button fx:id="sendButton" layoutX="278.0" layoutY="561.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="88.0" text="Trimite" />
-      <Button fx:id="buttonDeleteCourse" layoutX="489.0" layoutY="341.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="88.0" text="Sterge curs" />
-      <Label fx:id="mesajCursSters" layoutX="614.0" layoutY="333.0" prefHeight="69.0" prefWidth="220.0">
+      <TextField fx:id="idCourse" layoutX="306.0" layoutY="550.0" prefHeight="43.0" prefWidth="126.0" promptText="id curs" />
+      <Label fx:id="courseLabel" alignment="TOP_LEFT" layoutX="625.0" layoutY="500.0" prefHeight="107.0" prefWidth="240.0" textFill="#324a82">
          <font>
-            <Font size="18.0" />
+            <Font size="24.0" />
+         </font></Label>
+      <Button fx:id="sendButton" layoutX="475.0" layoutY="553.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="88.0" text="Trimite" />
+      <Button fx:id="buttonDeleteCourse" layoutX="489.0" layoutY="341.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="88.0" text="Sterge curs" />
+      <Label fx:id="mesajCursSters" layoutX="614.0" layoutY="333.0" prefHeight="69.0" prefWidth="220.0" textFill="#ca0606">
+         <font>
+            <Font size="22.0" />
          </font>
       </Label>
       <ImageView fitHeight="177.0" fitWidth="282.0" layoutX="671.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@WhatsApp%20Image%202020-12-21%20at%2015.13.09.jpegWhatsApp%20Image%202020-12-21%20at%2015.13.09.jpeg" />
+            <Image url="@../WhatsApp Image 2020-12-21 at 15.13.09.jpeg" />
          </image>
       </ImageView>
       <Button fx:id="backButton" mnemonicParsing="false" onAction="#mainMenu" prefHeight="37.0" prefWidth="73.0" text="☚">
@@ -52,5 +52,10 @@
             <Font size="20.0" />
          </font>
       </Button>
+      <Label fx:id="labelIntroduText" layoutX="318.0" layoutY="608.0" prefHeight="47.0" prefWidth="269.0" textFill="#ca0606">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
    </children>
 </Pane>

@@ -36,7 +36,7 @@
       <Button fx:id="register" layoutX="161.0" layoutY="227.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" text="1." />
       <Button fx:id="freePlaces" layoutX="161.0" layoutY="318.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" text="2." />
       <Button fx:id="allCourses" layoutX="161.0" layoutY="410.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" text="3." />
-      <Label fx:id="results" layoutX="243.0" layoutY="471.0" prefHeight="155.0" prefWidth="464.0" textFill="#324a82">
+      <Label fx:id="results" alignment="CENTER" contentDisplay="CENTER" layoutX="243.0" layoutY="471.0" prefHeight="155.0" prefWidth="464.0" textFill="#324a82">
          <font>
             <Font name="System Italic" size="24.0" />
          </font>

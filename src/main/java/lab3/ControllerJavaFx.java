@@ -68,6 +68,8 @@ public class ControllerJavaFx implements Initializable {
     public PasswordField passwordTeacher;
     @FXML
     public Label labelIntroduText;
+    @FXML
+    public Label labelCredits;
 
     Stage stage = new Stage();
 
@@ -247,6 +249,8 @@ public class ControllerJavaFx implements Initializable {
 
         numeStudent.setText(sr.findOne(id).getFirstName() + " " + sr.findOne(id).getLastName());
 
+        labelCredits.setText(Integer.toString(sr.findOne(id).getTotalCredits()));
+
         register.setOnAction(actionEvent -> {
 
             String course = courseToRegister.getText();
@@ -254,6 +258,7 @@ public class ControllerJavaFx implements Initializable {
                 results.setText("Introduceti un id va rog!");
             else
                 results.setText(rs.register(Long.parseLong(course), sr.findOne(id)));
+                labelCredits.setText(Integer.toString(sr.findOne(id).getTotalCredits()));
 
         });
 

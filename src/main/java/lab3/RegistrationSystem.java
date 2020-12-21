@@ -108,11 +108,11 @@ public class RegistrationSystem {
 
         List<String> allCourses= new ArrayList<String>();
         for(Course course: courseFileRepository.getCourseList())
-                allCourses.add("id: "+course.getId()+" - "+course.getName());
+                allCourses.add("id: "+course.getId()+" - "+course.getName()+", credite: "+course.getCredits());
 
         return allCourses.stream()
                 .map(String::valueOf)
-                .collect(Collectors.joining("\n\t", "Cursurile existente sunt:\n\t", " "));
+                .collect(Collectors.joining("\n", "Cursurile existente sunt:\n", " "));
 
     }
 

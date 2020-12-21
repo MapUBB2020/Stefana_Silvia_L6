@@ -47,5 +47,15 @@
             <Font size="20.0" />
          </font>
       </Button>
+      <Label layoutX="625.0" layoutY="57.0" prefHeight="60.0" prefWidth="138.0" text="Total credite:">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelCredits" alignment="CENTER" contentDisplay="RIGHT" layoutX="779.0" layoutY="57.0" prefHeight="60.0" prefWidth="73.0" textFill="#324a82">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
    </children>
 </Pane>

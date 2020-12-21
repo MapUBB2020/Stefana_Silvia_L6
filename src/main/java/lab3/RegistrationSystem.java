@@ -9,6 +9,7 @@ import lab3.repository.CourseFileRepository;
 import lab3.repository.TeacherFileRepository;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 
 public class RegistrationSystem {
@@ -36,45 +37,47 @@ public class RegistrationSystem {
      * we add the course in courseList from CourseRepo
      * we update the students totalCredit after he registered successfully for a new course
      */
-    @FXML
-    public Label results;
-    public boolean register(long id, Student student) {
+
+    public String register(long id, Student student) {
 
         if (courseFileRepository.findOne(id) == null) {
-            //System.out.println("This course does not exist. Please select another one!");
-            results.setText("This course does not exist. Please select another one!");
-            return false;
+            return "Acest curs nu exista! Va rugam selectati altul!";
         }
-
-        if(courseFileRepository.findOne(id).getMaxEnrollment()>= courseFileRepository.findOne(id).getStudentsEnrolled().size()){
-            System.out.println("No more available places!");
-            return false;
+        for(Student stud:courseFileRepository.findOne(id).getStudentsEnrolled()) {
+            if (student.getId() == stud.getId())
+                return "Esti deja inscris la acest curs!";
+        }
+        if(courseFileRepository.findOne(id).getMaxEnrollment()<= courseFileRepository.findOne(id).getStudentsEnrolled().size()){
+            return "Cursul selectat nu mai are locuri libere!";
         }
         if ((student.getTotalCredits() + courseFileRepository.findOne(id).getCredits()) > 30){
-            System.out.println("You have too many credits!");
-            return false;
+            return "Aveti deja 30 credite!";
         }
 
         courseFileRepository.findOne(id).getStudentsEnrolled().add(student);
         student.getEnrolledCourse().add(courseFileRepository.findOne(id));
         student.setTotalCredits(student.getTotalCredits()+ courseFileRepository.findOne(id).getCredits());
-        return true;
+        return "Te-ai inregistrat cu succes!";
     }
+
 
     /**
      * @return a list named available that contains all the courses with free places
      */
-    public List<Course> retrieveCoursesWithFreePlaces(){
 
-        List<Course> available= new ArrayList<Course>();
+    public String retrieveCoursesWithFreePlaces(){
+
+        List<String> available= new ArrayList<String>();
         for(Course course: courseFileRepository.getCourseList())
         {
             int free=course.getMaxEnrollment()-course.getStudentsEnrolled().size();
             if(free>0)
-                System.out.println(course.getName()+" has "+free+" free places!:)");
-            available.add(course);
+            available.add(course.getName()+" are "+free+" locuri libere :)");
         }
-        return available;
+
+        return available.stream()
+                .map(n -> String.valueOf(n))
+                .collect(Collectors.joining("\n", "", " "));
     }
 
     /**
@@ -101,9 +104,15 @@ public class RegistrationSystem {
     /**
      * @return a list with all courses
      */
-    public List<Course> getAllCourses(){
+    public String getAllCourses(){
 
-        return courseFileRepository.getCourseList();
+        List<String> allCourses= new ArrayList<String>();
+        for(Course course: courseFileRepository.getCourseList())
+                allCourses.add("id: "+course.getId()+" - "+course.getName());
+
+        return allCourses.stream()
+                .map(String::valueOf)
+                .collect(Collectors.joining("\n\t", "Cursurile existente sunt:\n\t", " "));
 
     }
 

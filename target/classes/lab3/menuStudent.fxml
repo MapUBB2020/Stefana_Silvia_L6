@@ -6,42 +6,46 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="74.0" layoutY="72.0" prefHeight="52.0" prefWidth="106.0" text="Buna ziua,">
+      <Label layoutX="78.0" layoutY="57.0" prefHeight="53.0" prefWidth="210.0" text="Buna ziua,">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Label>
+      <Label fx:id="numeStudent" layoutX="183.0" layoutY="110.0" prefHeight="74.0" prefWidth="394.0">
+         <font>
+            <Font name="System Bold Italic" size="30.0" />
+         </font>
+      </Label>
+      <Label layoutX="237.0" layoutY="209.0" prefHeight="60.0" prefWidth="304.0" text="Inscrie-te la un curs">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="240.0" layoutY="303.0" prefHeight="60.0" prefWidth="552.0" text="Vezi cursurile cu locuri libere si cate au mai ramas">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="243.0" layoutY="395.0" prefHeight="60.0" prefWidth="273.0" text="Vezi toate cursurile">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Button fx:id="register" layoutX="161.0" layoutY="227.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" text="1." />
+      <Button fx:id="freePlaces" layoutX="161.0" layoutY="318.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" text="2." />
+      <Button fx:id="allCourses" layoutX="161.0" layoutY="410.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" text="3." />
+      <Label fx:id="results" layoutX="243.0" layoutY="471.0" prefHeight="155.0" prefWidth="464.0" textFill="#324a82">
+         <font>
+            <Font name="System Italic" size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="courseToRegister" layoutX="544.0" layoutY="213.0" prefHeight="53.0" prefWidth="219.0" promptText="id-ul cursului" />
+      <Button fx:id="backButtonStud" mnemonicParsing="false" prefHeight="37.0" prefWidth="73.0" text="☚">
          <font>
             <Font size="20.0" />
          </font>
-      </Label>
-      <Label fx:id="numeStudent" layoutX="101.0" layoutY="130.0" prefHeight="74.0" prefWidth="226.0">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Label layoutX="237.0" layoutY="251.0" prefHeight="60.0" prefWidth="304.0" text="Inscrie-te la un curs">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Label layoutX="237.0" layoutY="304.0" prefHeight="60.0" prefWidth="485.0" text="Vezi cursurile cu locuri libere si cate au mai ramas">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Label layoutX="237.0" layoutY="364.0" prefHeight="60.0" prefWidth="198.0" text="Vezi toate cursurile">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Button fx:id="register" layoutX="162.0" layoutY="269.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="44.0" text="1." />
-      <Button fx:id="freePlaces" layoutX="162.0" layoutY="322.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="44.0" text="2." />
-      <Button fx:id="allCourses" layoutX="162.0" layoutY="382.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="44.0" text="3." />
-      <Label fx:id="results" layoutX="189.0" layoutY="466.0" prefHeight="155.0" prefWidth="464.0">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <TextField fx:id="courseToRegister" layoutX="457.0" layoutY="264.0" prefHeight="35.0" prefWidth="169.0" promptText="id-ul cursului" />
+      </Button>
    </children>
 </Pane>

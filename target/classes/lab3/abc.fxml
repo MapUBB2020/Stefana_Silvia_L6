@@ -14,7 +14,7 @@
          </font>
       </Label>
       <TextField fx:id="loginInput" layoutX="327.0" layoutY="322.0" prefHeight="56.0" prefWidth="247.0" promptText="Please enter your id." />
-      <Button layoutX="424.0" layoutY="416.0" mnemonicParsing="false" onAction="#checkId" text="Submit" />
+      <Button layoutX="411.0" layoutY="413.0" mnemonicParsing="false" onAction="#checkId" prefHeight="40.0" prefWidth="80.0" text="Trimite" />
       <Label fx:id="label1" layoutX="388.0" layoutY="520.0" prefHeight="56.0" prefWidth="143.0" />
       <Label fx:id="loginError" layoutX="336.0" layoutY="294.0" prefHeight="25.0" prefWidth="228.0" />
    </children>

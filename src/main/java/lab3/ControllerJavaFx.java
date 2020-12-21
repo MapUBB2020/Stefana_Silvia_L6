@@ -1,34 +1,28 @@
 package lab3;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import lab3.model.Course;
 import lab3.model.Student;
-import lab3.model.Teacher;
 import lab3.repository.CourseFileRepository;
 import lab3.repository.StudentFileRepository;
 import lab3.repository.TeacherFileRepository;
 
 
-import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class ControllerJavaFx implements Initializable {
 
@@ -62,7 +56,10 @@ public class ControllerJavaFx implements Initializable {
     public Label results;
     @FXML
     public TextField courseToRegister;
-
+    @FXML
+    public Button backButton;
+    @FXML
+    public Button backButtonStud;
 
     Stage stage= new Stage();
 
@@ -126,18 +123,10 @@ public class ControllerJavaFx implements Initializable {
         Parent root=loader.load();
         s.setScene(new Scene(root, 900, 700));
         s.show();
-
-        //System.out.println(cr.getCourseList());
     }
 
 
-    public void loginTeacherPage(javafx.event.ActionEvent e) throws IOException {/*
-        Parent finishRoot = FXMLLoader.load(getClass().getResource("/lab3/abc.fxml"));
-        Scene menuT=new Scene(finishRoot);
-        stage=(Stage) ((Node) e.getSource()).getScene().getWindow();
-        stage.setScene(menuT);
-        stage.show();
-        System.out.println(cr.getCourseList());*/
+    public void loginTeacherPage(javafx.event.ActionEvent e) throws IOException {
         FXMLLoader loader1 = new FXMLLoader(getClass().getResource("/lab3/abc.fxml"));
         loader1.setController(this);
         Parent finishRoot=loader1.load();
@@ -145,15 +134,11 @@ public class ControllerJavaFx implements Initializable {
         stage=(Stage) ((Node) e.getSource()).getScene().getWindow();
         stage.setScene(menuT);
         stage.show();
-        //System.out.println(sr.getStudentList());
 
     }
 
     public void checkId(javafx.event.ActionEvent e) throws IOException {
         String loginTeacher=loginInput.getText();
-        //long id=0;
-        //System.out.println(sr.getStudentList().get(0).getTotalCredits());
-        //System.out.println(sr.getStudentList());
         if(tr.findOne(Long.parseLong(loginTeacher))==null)
             loginError.setText("bitch u entered the wrong id!");
         else
@@ -189,28 +174,56 @@ public class ControllerJavaFx implements Initializable {
         stage.show();
 
         teacherName.setText(tr.findOne(id).getFirstName()+" "+tr.findOne(id).getLastName());
-        coursesTeacher.setText(tr.findOne(id).getCourses().get(0).getName()+" id: "+tr.findOne(id).getCourses().get(0).getId());
+        if(tr.findOne(id).getCourses().size()!=0)
+
+            coursesTeacher.setText(tr.findOne(id).getCourses().get(0).getName() + " id: " + tr.findOne(id).getCourses().get(0).getId());
+        else
+            coursesTeacher.setText("Nu aveti niciun curs!:(");
 
         sendButton.setOnAction(actionEvent -> {
-            infoCourse(id);
+            String course=idCourse.getText();
+            if(course.equals(""))
+                courseLabel.setText("Introduceti un id va rog!");
+            else
+                courseLabel.setText(infoCourse(Long.parseLong(course)));
         });
 
         buttonDeleteCourse.setOnAction(actionEvent -> {
             rs.deleteCourse(id,tr.findOne(id));
             mesajCursSters.setText("Cursul a fost sters!");
-            coursesTeacher.setText(tr.findOne(id).getCourses().toString());
+            List<String> coursesT= new ArrayList<String>();
+            for(Course curs: tr.findOne(id).getCourseList())
+                coursesT.add(curs.getName());
+
+            String s=coursesT.stream()
+                    .map(String::valueOf)
+                    .collect(Collectors.joining("\n", "", " "));
+
+            coursesTeacher.setText(s);
+        });
+
+        backButton.setOnAction(actionEvent -> {
+            try {
+                mainMenu();
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+            stage.close();
         });
     }
 
 
 
-    public void infoCourse(Long id){
+    public String infoCourse(Long id){
 
-        for (int i=0; i<cr.findOne(id).getStudentsEnrolled().size();i++) {
-            //Label label=new Label();
-            courseLabel.setText("Studentii inscrisi la cursul dumneavoastra sunt:\n" + cr.findOne(id).getStudentsEnrolled().get(i).getFirstName() + " " + cr.findOne(id).getStudentsEnrolled().get(i).getLastName());
-            System.out.println(cr.findOne(id).getStudentsEnrolled());
-        }
+        List<String> studenti= new ArrayList<String>();
+        for(Student stud: cr.findOne(id).getStudentsEnrolled())
+
+                studenti.add(stud.getFirstName()+" "+stud.getLastName());
+
+        return studenti.stream()
+                .map(String::valueOf)
+                .collect(Collectors.joining("\n", "", " "));
     }
 
     public void loginStudentPage(javafx.event.ActionEvent e) throws IOException {
@@ -234,52 +247,37 @@ public class ControllerJavaFx implements Initializable {
         stage.setScene(menuS);
         stage.show();
 
+
         numeStudent.setText(sr.findOne(id).getFirstName()+" "+sr.findOne(id).getLastName());
 
         register.setOnAction(actionEvent -> {
 
-            String course=loginInput.getText();
-            System.out.println(course);
-            System.out.println(sr.findOne(id));
-            rs.register(Long.parseLong(course), sr.findOne(id));
-
-/*            List<Course> options=new ArrayList<>();
-            options=cr.getCourseList();
-
-            for (int i=0; i<options.size();i++){
-                System.out.println(options);
-                results.setText(options.get(i).getName());
-            }*/
+            String course=courseToRegister.getText();
+            if(course=="")
+                results.setText("Introduceti un id va rog!");
+            else
+                results.setText(rs.register(Long.parseLong(course), sr.findOne(id)));
 
         });
 
         freePlaces.setOnAction(actionEvent -> {
 
-/*            List<Course> available= new ArrayList<Course>();
-            for(Course course: cr.getCourseList())
-            {
-                int free=course.getMaxEnrollment()-course.getStudentsEnrolled().size();
-                if(free>0)
-                    results.setText((course.getName()+" has "+free+" free places!:)"));
-                available.add(course);
-            }*/
+            results.setText(rs.retrieveCoursesWithFreePlaces());
 
-            //results.setText(rs.retrieveCoursesWithFreePlaces().toString());
-            rs.retrieveCoursesWithFreePlaces();
-            for (Course curs : rs.retrieveCoursesWithFreePlaces()){
-                results.setText(rs.retrieveCoursesWithFreePlaces().toString());
-            }
         });
 
         allCourses.setOnAction(actionEvent -> {
-            rs.getAllCourses();
-            List<String> numeCursuri=new ArrayList<>();
-
-            for(Course curs:cr.getCourseList())
-                numeCursuri.add(curs.getName());
-            results.setText(numeCursuri.toString());
+            results.setText(rs.getAllCourses());
         });
 
+        backButtonStud.setOnAction(actionEvent -> {
+            try {
+                mainMenu();
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+            stage.close();
+        });
     }
     public void checkIdStudent(javafx.event.ActionEvent e) throws IOException {
         String loginStudent=loginInput.getText();

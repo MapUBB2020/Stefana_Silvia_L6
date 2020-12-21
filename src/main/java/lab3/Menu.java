@@ -1,3 +1,4 @@
+/*
 package lab3;
 
 import lab3.controller.StudentFileController;
@@ -200,13 +201,16 @@ public class Menu {
         }
     }
 
-    /**
+    */
+/**
      * @param id input
      * condition for ArithmeticException
-     */
+     *//*
+
     static void checkInput(long id) {
         if (id <= 0)
             throw new ArithmeticException("Access denied - You cannot enter a negative id.");
     }
 
 }
+*/

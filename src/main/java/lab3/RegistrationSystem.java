@@ -97,6 +97,7 @@ public class RegistrationSystem {
     public boolean deleteCourse(long id,Teacher teacher){
         int l1=teacher.getCourseList().size();
         teacher.getCourses().remove(courseFileRepository.findOne(id));
+        courseFileRepository.findOne(id).getStudentsEnrolled().clear();
         int l2=teacher.getCourseList().size();
         return l1 > l2;
     }

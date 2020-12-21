@@ -22,7 +22,7 @@
          <font>
             <Font size="24.0" />
          </font></Label>
-      <Label fx:id="coursesTeacher" layoutX="293.0" layoutY="333.0" prefHeight="54.0" prefWidth="196.0" textFill="#324a82">
+      <Label fx:id="coursesTeacher" layoutX="281.0" layoutY="334.0" prefHeight="54.0" prefWidth="229.0" textFill="#324a82">
          <font>
             <Font size="22.0" />
          </font></Label>
@@ -36,7 +36,7 @@
             <Font size="24.0" />
          </font></Label>
       <Button fx:id="sendButton" layoutX="475.0" layoutY="553.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="88.0" text="Trimite" />
-      <Button fx:id="buttonDeleteCourse" layoutX="489.0" layoutY="341.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="88.0" text="Sterge curs" />
+      <Button fx:id="buttonDeleteCourse" layoutX="510.0" layoutY="342.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="88.0" text="Sterge curs" />
       <Label fx:id="mesajCursSters" layoutX="614.0" layoutY="333.0" prefHeight="69.0" prefWidth="220.0" textFill="#ca0606">
          <font>
             <Font size="22.0" />

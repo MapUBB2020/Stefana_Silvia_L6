@@ -174,23 +174,40 @@ public class ControllerJavaFx implements Initializable {
         stage.show();
 
         teacherName.setText(tr.findOne(id).getFirstName() + " " + tr.findOne(id).getLastName());
-        if (tr.findOne(id).getCourses().size() != 0)
 
+        if (tr.findOne(id).getCourses().size() != 0)
             coursesTeacher.setText(tr.findOne(id).getCourses().get(0).getName() + " id: " + tr.findOne(id).getCourses().get(0).getId());
         else
             coursesTeacher.setText("Nu aveti niciun curs!:(");
 
         sendButton.setOnAction(actionEvent -> {
             String course = idCourse.getText();
-            if (course.equals(""))
-                labelIntroduText.setText("Introduceti un id va rog!");
-            else
-                courseLabel.setText(infoCourse(Long.parseLong(course)));
+
+            if(Integer.parseInt(course)>cr.getCourseList().size())
+                labelIntroduText.setText("Nu exista curs cu acest id!");
+            else {
+                if (course.equals(""))
+                    labelIntroduText.setText("Introduceti un id va rog!");
+                if (!tr.findOne(id).getCourseList().contains(cr.findOne(Long.parseLong(course))) && cr.findOne(Long.parseLong(course)).getTeacher() == tr.findOne(id))
+                    labelIntroduText.setText("Cursul a fost sters!");
+                else {
+                    if (cr.findOne(Long.parseLong(course)).getTeacher() == tr.findOne(id)) {
+                        mesajCursSters.setText(" ");
+                        labelIntroduText.setText(" ");
+                        courseLabel.setText(infoCourse(Long.parseLong(course)));
+
+                    } else if (cr.findOne(Long.parseLong(course)).getTeacher() != tr.findOne(id)) {
+                        mesajCursSters.setText(" ");
+                        courseLabel.setText(" ");
+                        labelIntroduText.setText("Nu aveti acces la acest curs!");
+                    }
+                }
+            }
         });
 
         buttonDeleteCourse.setOnAction(actionEvent -> {
             rs.deleteCourse(id, tr.findOne(id));
-            mesajCursSters.setText("Cursul a fost sters!");
+            mesajCursSters.setText("Cursul a fost sters\n cu succes!");
             List<String> coursesT = new ArrayList<String>();
             for (Course curs : tr.findOne(id).getCourseList())
                 coursesT.add(curs.getName());
@@ -200,6 +217,12 @@ public class ControllerJavaFx implements Initializable {
                     .collect(Collectors.joining("\n", "", " "));
 
             coursesTeacher.setText(s);
+
+            String str = cr.findOne(id).getStudentsEnrolled().stream()
+                    .map(String::valueOf)
+                    .collect(Collectors.joining("\n", "", " "));
+
+            courseLabel.setText(str);
         });
 
         backButton.setOnAction(actionEvent -> {
@@ -252,20 +275,16 @@ public class ControllerJavaFx implements Initializable {
         labelCredits.setText(Integer.toString(sr.findOne(id).getTotalCredits()));
 
         register.setOnAction(actionEvent -> {
-
             String course = courseToRegister.getText();
             if (course == "")
                 results.setText("Introduceti un id va rog!");
             else
                 results.setText(rs.register(Long.parseLong(course), sr.findOne(id)));
                 labelCredits.setText(Integer.toString(sr.findOne(id).getTotalCredits()));
-
         });
 
         freePlaces.setOnAction(actionEvent -> {
-
             results.setText(rs.retrieveCoursesWithFreePlaces());
-
         });
 
         allCourses.setOnAction(actionEvent -> {

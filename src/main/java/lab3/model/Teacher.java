@@ -1,8 +1,6 @@
 package lab3.model;
 import java.util.*;
 
-import lab3.repository.ICrudRepository;
-
 public class Teacher extends Person{
     private long id;
     private List<Course> courses;

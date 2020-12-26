@@ -1,7 +1,5 @@
 package lab3;
 
-import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 import lab3.model.Course;
 import lab3.model.Student;
 import lab3.model.Teacher;
@@ -26,6 +24,7 @@ public class RegistrationSystem {
         this.teacherFileRepository=teacherFileRepository;
     }
 
+
     /**
      * @param id of the course the student wants to register to
      * @param student who wants to register
@@ -37,7 +36,6 @@ public class RegistrationSystem {
      * we add the course in courseList from CourseRepo
      * we update the students totalCredit after he registered successfully for a new course
      */
-
     public String register(long id, Student student) {
 
         if (courseFileRepository.findOne(id) == null) {
@@ -64,7 +62,6 @@ public class RegistrationSystem {
     /**
      * @return a list named available that contains all the courses with free places
      */
-
     public String retrieveCoursesWithFreePlaces(){
 
         List<String> available= new ArrayList<String>();
@@ -80,6 +77,7 @@ public class RegistrationSystem {
                 .collect(Collectors.joining("\n", "", " "));
     }
 
+
     /**
      * @param course
      * @return all students enrolled in the course from param
@@ -87,6 +85,7 @@ public class RegistrationSystem {
     public List<Student> retrieveStudentsEnrolledForACourse(Course course){
         return  course.getStudentsEnrolled();
     }
+
 
     /**
      * @param id of the course to be deleted
@@ -102,6 +101,7 @@ public class RegistrationSystem {
         return l1 > l2;
     }
 
+
     /**
      * @return a list with all courses
      */
@@ -114,8 +114,8 @@ public class RegistrationSystem {
         return allCourses.stream()
                 .map(String::valueOf)
                 .collect(Collectors.joining("\n", "Cursurile existente sunt:\n", " "));
-
     }
+
 
     /**
      * @param id course
@@ -132,8 +132,9 @@ public class RegistrationSystem {
         return null;
     }
 
+
     /**
-     * @return list "sortet" which has all courses ordered by the higher credits
+     * @return list "sorted" which has all courses ordered by the higher credits
      */
     public List<Course> sortCoursesByCredits(){
 
@@ -147,6 +148,7 @@ public class RegistrationSystem {
         return sorted;
     }
 
+
     /**
      * @return list "filtered" which contains courses with minimum 2 student enrolled
      */
@@ -158,13 +160,16 @@ public class RegistrationSystem {
         }
         return filtered;
     }
+
+
+    /**
+     * @param id Teacher
+     * @return
+     */
     public boolean validateTeacherId(long id){
         for(Teacher teacher:teacherFileRepository.teacherList)
             if(teacherFileRepository.findOne(id)==teacher)
                 return true;
-
         return false;
-
     }
-
 }

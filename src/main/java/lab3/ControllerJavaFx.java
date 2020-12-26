@@ -72,6 +72,7 @@ public class ControllerJavaFx implements Initializable {
     public Label labelCredits;
 
     Stage stage = new Stage();
+    Stage stageStud = new Stage();
 
     public CourseFileRepository cr;
     public StudentFileRepository sr;
@@ -126,6 +127,10 @@ public class ControllerJavaFx implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
     }
 
+
+    /**
+     * @throws IOException opens the main menu of the platform
+     */
     public void mainMenu() throws IOException {
         Stage s = new Stage();
 
@@ -138,24 +143,33 @@ public class ControllerJavaFx implements Initializable {
     }
 
 
-
+    /**
+     * @param e
+     * @throws IOException login page for teacher
+     */
     public void loginTeacherPage(javafx.event.ActionEvent e) throws IOException {
+        Stage sTeacher = new Stage();
+
         FXMLLoader loader1 = new FXMLLoader(getClass().getResource("/lab3/abc.fxml"));
         loader1.setController(this);
-        Parent finishRoot = loader1.load();
-        Scene menuT = new Scene(finishRoot);
-        stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-        stage.setScene(menuT);
-        stage.show();
+
+        Parent root = loader1.load();
+        sTeacher.setScene(new Scene(root, 900, 700));
+        sTeacher.show();
 
     }
 
+
+    /**
+     * @param e
+     * @throws IOException checks login info for teachers
+     */
     public void checkId(javafx.event.ActionEvent e) throws IOException {
         String loginTeacher = loginInput.getText();
 
         for (Teacher teacher : tr.getTeacherList()) {
 
-            if (loginTeacher.equals(teacher.getFirstName() + " " + teacher.getLastName()) && passwordTeacher.getText().equals("password"+teacher.getId())) {
+            if (loginTeacher.equals(teacher.getFirstName() + " " + teacher.getLastName()) && passwordTeacher.getText().equals("password" + teacher.getId())) {
                 menuTeacher(e, teacher.getId());
             } else
                 loginError.setText("bitch u entered the wrong name or password!");
@@ -164,6 +178,11 @@ public class ControllerJavaFx implements Initializable {
     }
 
 
+    /**
+     * @param e
+     * @param id
+     * @throws IOException teacher menu
+     */
     public void menuTeacher(javafx.event.ActionEvent e, Long id) throws IOException {
         FXMLLoader loader2 = new FXMLLoader(getClass().getResource("/lab3/menuTeacher.fxml"));
         loader2.setController(this);
@@ -183,7 +202,7 @@ public class ControllerJavaFx implements Initializable {
         sendButton.setOnAction(actionEvent -> {
             String course = idCourse.getText();
 
-            if(Integer.parseInt(course)>cr.getCourseList().size())
+            if (Integer.parseInt(course) > cr.getCourseList().size())
                 labelIntroduText.setText("Nu exista curs cu acest id!");
             else {
                 if (course.equals(""))
@@ -226,16 +245,16 @@ public class ControllerJavaFx implements Initializable {
         });
 
         backButton.setOnAction(actionEvent -> {
-            try {
-                mainMenu();
-            } catch (IOException ioException) {
-                ioException.printStackTrace();
-            }
+
             stage.close();
         });
     }
 
 
+    /**
+     * @param id
+     * @return list with students enrolled for a specific course
+     */
     public String infoCourse(Long id) {
 
         List<String> studenti = new ArrayList<String>();
@@ -248,26 +267,37 @@ public class ControllerJavaFx implements Initializable {
                 .collect(Collectors.joining("\n", "", " "));
     }
 
+
+    /**
+     * @param e
+     * @throws IOException
+     */
     public void loginStudentPage(javafx.event.ActionEvent e) throws IOException {
+
+        Stage sStud = new Stage();
 
         FXMLLoader loader4 = new FXMLLoader(getClass().getResource("/lab3/abcStud.fxml"));
         loader4.setController(this);
-        Parent finishRoot = loader4.load();
-        Scene menuS = new Scene(finishRoot);
-        stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-        stage.setScene(menuS);
-        stage.show();
+
+        Parent root = loader4.load();
+        sStud.setScene(new Scene(root, 900, 700));
+        sStud.show();
 
     }
 
+    /**
+     * @param e
+     * @param id Student
+     * @throws IOException
+     */
     public void menuStudent(javafx.event.ActionEvent e, Long id) throws IOException {
         FXMLLoader loader3 = new FXMLLoader(getClass().getResource("/lab3/menuStudent.fxml"));
         loader3.setController(this);
         Parent finishRoot = loader3.load();
         Scene menuS = new Scene(finishRoot);
-        stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-        stage.setScene(menuS);
-        stage.show();
+        stageStud = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stageStud.setScene(menuS);
+        stageStud.show();
 
 
         numeStudent.setText(sr.findOne(id).getFirstName() + " " + sr.findOne(id).getLastName());
@@ -280,7 +310,8 @@ public class ControllerJavaFx implements Initializable {
                 results.setText("Introduceti un id va rog!");
             else
                 results.setText(rs.register(Long.parseLong(course), sr.findOne(id)));
-                labelCredits.setText(Integer.toString(sr.findOne(id).getTotalCredits()));
+            labelCredits.setText(Integer.toString(sr.findOne(id).getTotalCredits()));
+
         });
 
         freePlaces.setOnAction(actionEvent -> {
@@ -292,21 +323,22 @@ public class ControllerJavaFx implements Initializable {
         });
 
         backButtonStud.setOnAction(actionEvent -> {
-            try {
-                mainMenu();
-            } catch (IOException ioException) {
-                ioException.printStackTrace();
-            }
-            stage.close();
+
+            stageStud.close();
         });
     }
 
+
+    /**
+     * @param e
+     * @throws IOException
+     */
     public void checkIdStudent(javafx.event.ActionEvent e) throws IOException {
         String loginStudent = loginInput.getText();
 
         for (Student stud : sr.getStudentList()) {
 
-            if (loginStudent.equals(stud.getFirstName() + " " + stud.getLastName()) && passwordStud.getText().equals("password"+stud.getId())) {
+            if (loginStudent.equals(stud.getFirstName() + " " + stud.getLastName()) && passwordStud.getText().equals("password" + stud.getId())) {
                 menuStudent(e, stud.getId());
             } else
                 loginError.setText("bitch u entered the wrong name or password!");
